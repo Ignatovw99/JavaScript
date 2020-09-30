@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My first DOM page</title>
+</head>
+<body>
+    <h1 id="heading">Intro to DOM</h1>
+    <ul>
+        <li id="methods-list-item" class="list-item">DOM Methods</li>
+        <li class="list-item">DOM Properties</li>
+    </ul>
+
+    <script type="application/javascript">
+        let ulElement = document.querySelector('ul');
+        ulElement.innerHTML += '<li>Newly created list item!</li>';  //innerHTML everything inside the tag of an element
+
+        let liElement = document.querySelector('#methods-list-item');
+        console.log(liElement.attributes);
+
+        liElement.setAttribute('data-name', 'John');
+        console.log(liElement.attributes);
+
+        liElement.style.backgroundColor = 'pink';  //css property background-color -> js property backgroundColor
+        liElement.style.color = 'white';
+
+        let parentElement = document.querySelector('ul');
+        let childElement = document.getElementsByClassName('list-item')[1];
+
+        parentElement.removeChild(childElement); //Child element is not deleted from the memory
+
+        childElement.innerHTML += 'Was Deleted!';
+        parentElement.appendChild(childElement);
+
+        document.write('Append sth to document');
+
+        //DOM create new element
+        let newLiElement = document.createElement('li');
+        newLiElement.textContent += 'NEW DOM create element';
+        console.log(newLiElement);
+
+        parentElement.appendChild(newLiElement);
+        // document.body is the parent element it is <body> html element
+        let paragraphElement = document.createElement('p');
+        parentElement.textContent = 'Appended to body';
+        document.body.appendChild(parentElement);   // But it rewrite everything
+
+        //cloneNode()
+        //remove() ---- removeChild()
+
+        //Better to organize everything in the memory and than appended to the dom tree because its a slower operation
+        //We can move a node when appending it somewhere else
+    </script>
+</body>
+</html>
