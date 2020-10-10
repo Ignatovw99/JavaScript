@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="def7372d-7388-4ed7-b90e-245484bd5778" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/01. Subtraction/01. Substraction.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/01. Subtraction/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/01. Subtraction/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/01. Subtraction/subtract.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/02. Fill-Dropdown/02. Fill-Dropdown.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/02. Fill-Dropdown/dropdown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/02. Fill-Dropdown/filldropdown.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/02. Fill-Dropdown/filldropdown.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/03. Accordion/03. Accordion.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/03. Accordion/accordion.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/03. Accordion/accordion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/03. Accordion/accordion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/04. Order-the-Names/solution.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/04. Order-the-Names/template.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/04. Order-the-Names/template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/05. Chat-Room/solution.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/05. Chat-Room/template.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/05. Chat-Room/template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/06. Numpad-Calculator/solution.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/06. Numpad-Calculator/template.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/06. Numpad-Calculator/template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/08. JavaScript-Quizz/solution.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/08. JavaScript-Quizz/template.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/08. JavaScript-Quizz/template.html" afterDir="false" />
-    </list>
+    <list default="true" id="def7372d-7388-4ed7-b90e-245484bd5778" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -37,26 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/06. Numpad-Calculator/solution.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/06. Numpad-Calculator/template.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -138,10 +94,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2296" />
-    <option name="y" value="126" />
-    <option name="width" value="1400" />
-    <option name="height" value="784" />
+    <option name="x" value="240" />
+    <option name="y" value="128" />
+    <option name="width" value="1440" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -161,12 +117,6 @@
               <item name="JavaScript" type="b2602c69:ProjectViewProjectNode" />
               <item name="JavaScript" type="462c0819:PsiDirectoryNode" />
               <item name="JS Advanced" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JavaScript" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JavaScript" type="462c0819:PsiDirectoryNode" />
-              <item name="JS Advanced" type="462c0819:PsiDirectoryNode" />
-              <item name="03. Objects &amp; Classes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JavaScript" type="b2602c69:ProjectViewProjectNode" />
@@ -267,6 +217,7 @@
       <workItem from="1601280397246" duration="17543000" />
       <workItem from="1601473206809" duration="7465000" />
       <workItem from="1601533651631" duration="8249000" />
+      <workItem from="1602260070099" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="Arrays Lab added">
       <created>1600460113253</created>
@@ -314,7 +265,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133577000" />
+    <option name="totallyTimeSpent" value="133589000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -326,9 +277,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13224447" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1321004" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -339,7 +290,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32956153" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.2524377" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.25176802" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32956153" />
@@ -742,17 +693,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/06. Numpad-Calculator/template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/06. Numpad-Calculator/solution.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JS Advanced/04.DOM/02.Exercise/06. Numpad-Calculator/template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
         </state>
       </provider>
     </entry>
