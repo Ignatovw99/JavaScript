@@ -1,0 +1,16 @@
+{
+  "name": "demo-application",
+  "version": "1.0.0",
+  "description": "First demo app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha tests/**/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.0"
+  }
+}
