@@ -1,0 +1,1 @@
+You can run all the test with the command - npm run test!!
