@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let now = Date.now();
+        let promise = fetch('https://swapi.dev/api/people/12311/');
+
+        promise
+            .then(res => {
+                console.log(res);
+                console.log(Date.now() - now);
+                if (!res.ok) {
+                    return Promise.reject('Not found');
+                }
+                return res.json(); // returns a new promise
+            })
+            .then(data => {
+                console.log(data);
+                
+            })
+            .catch(err => console.log(err)); //Can be executed from rejecting in both then()
+
+        //Callback hell simulation
+
+
+
+
+        fetch('https://swapi.dev/api/people/4/')
+            .then(res => res.json())
+            .then(character => fetch(character.starships[0]))
+            .then(res => res.json()) //This solves the callback hell problem
+            .then(starship => console.log(starship)) // But here there is another problem - 
+                                                        //character can not be accessed bacause it's another scope
+                                                        //But can be solved with Promise.all([...]) pass many promises
+            .catch(err => {
+                console.log('in catch');
+                console.log(err);
+            });
+
+        async function getStarWarsCharacter(id) {
+            let response = await fetch(`https://swapi.dev/api/people/${id}/`); //promises are awaited
+            let character = await response.json(); // await is used only with one promise / with many proises then() should be used
+    
+            let characterFirstStarshipUrl = character.starships[0];
+            let starshipResponse = await fetch(characterFirstStarshipUrl);
+            let starship = await starshipResponse.json();
+
+            console.log(starship);
+            console.log(`${character.name} - ${starship.name}`); //The problem with the context above is solved (character and starship are both accessable)
+        }
+        
+        getStarWarsCharacter(4);
+        //The four above promises are being executed in sequence -> The problem is that some operation can be executed in parallel
+
+        // await works with try-catch block - if await receives a rejected promise - than its delegated to catch block ,
+        // but it can be used with catch() method because the return is a promise
+
+        async function getStarWarsCharacterInParallel(id) {
+            let response = fetch(`https://swapi.dev/api/people/${id}/`);
+            let responseSecond = fetch(`https://swapi.dev/api/people/${id + 1}/`);
+            //The both request does not wait on each other -> they are executed in parallel
+
+            let firstCharacter = await response.json();
+            let secondCharacter = await responseSecond.json();
+            //wait on each other requests
+        }
+    </script>
+</body>
+</html>
