@@ -27,6 +27,12 @@ function attachEvents() {
             });
     }
 
+    function deletePhonebook(key) {
+        const deleteUrl = `https://phonebook-nakov.firebaseio.com/phonebook/${key}.json`;
+        fetch(deleteUrl, { method: 'DELETE' })
+            .then(() => loadPhonebooks());
+    }
+
     function createListItemElement(phonebooks, key) {
         const currentPhonebook = phonebooks[key];
         const itemElement = document.createElement('li');
@@ -57,12 +63,6 @@ function attachEvents() {
             phoneInputElement.value = '';
             loadPhonebooks();
         });
-    }
-
-    function deletePhonebook(key) {
-        const deleteUrl = `https://phonebook-nakov.firebaseio.com/phonebook/${key}.json`;
-        fetch(deleteUrl, { method: 'DELETE' })
-            .then(() => loadPhonebooks());
     }
 }
 

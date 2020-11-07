@@ -1,21 +1,22 @@
 function solve() {
 
     const url = `https://judgetests.firebaseio.com/schedule/`;
-    let stopId = 'depot';
-    let currentStop;
 
     const infoSpanElement = document.querySelector('#info > .info');
     const departButton = document.querySelector('#depart');
     const arriveButton = document.querySelector('#arrive');
+    
+    let stopId = 'depot';
+    let currentStop;
+
+    function swapButtonDisability(firstButton, secondButton) {
+        let tempValue = firstButton.disabled;
+        firstButton.disabled = secondButton.disabled;
+        secondButton.disabled = tempValue;
+    }
 
     function changeButton() {
-        if (departButton.disabled) {
-            departButton.disabled = false;
-            arriveButton.disabled = true;
-        } else {
-            arriveButton.disabled = false;
-            departButton.disabled = true;
-        }
+        swapButtonDisability(departButton, arriveButton);
     }
 
     function depart() {
