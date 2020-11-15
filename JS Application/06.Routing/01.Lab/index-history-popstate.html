@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routing History API</title>
+</head>
+<body>
+    <h1>Hello History API</h1>
+
+    <div id="root"></div>
+
+    <a href="#" onclick="navigate(event, 'home')">home</a>
+    <a href="#" onclick="navigate(event, 'about')">about</a>
+    <a href="#" onclick="navigate(event, 'contact')">contact</a>
+
+    <button id="change">Chnage</button>
+
+    <script>
+        console.log(window.history);
+
+        const rootElement = document.getElementById('root');
+
+        const router = {
+            '/home': `<h3>Home page</h3>`,
+            '/about': `<h3>Abount us</h3>`,
+            '/contact': `<h3>Our contacts</h3>`,
+            '/changed': `<h3>Dynamic changed</h3>`
+        };
+
+        window.addEventListener('popstate', e => {
+            console.log('Popstate event');
+            rootElement.innerHTML = router[location.pathname.substring(location.pathname.lastIndexOf('/'))] 
+                                                                || `<h2>Not found!</h2>`;
+        });
+
+        function navigate(e, url) {
+            e && e.preventDefault();
+            history.pushState({}, '', url);
+            let event = new CustomEvent('popstate', {
+                state: {},
+                title: '',
+                url
+            });
+
+            window.dispatchEvent(event);
+        }
+
+        document.getElementById('change').addEventListener('click', () => {
+            navigate(null, 'changed');
+        });
+    </script>
+</body>
+</html>

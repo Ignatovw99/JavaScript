@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routing</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+
+    <div id="root">
+
+    </div>
+
+    <a href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#contact">contact</a>
+
+    <button id="change-hash">change</button>
+
+    <script>
+        console.log(window.location);
+        console.log(location.hash);
+
+        const rootElement = document.getElementById('root');
+
+        const router = {
+            '#home': `<h3>Home page</h3>`,
+            '#about': `<h3>Abount us</h3>`,
+            '#contact': `<h3>Our contacts</h3>`,
+            '#changed': `<h3>Dynamic changed</h3>`,
+        };
+
+        rootElement.innerHTML = router[location.hash] || `<h3>Not found</h3>`;
+
+        window.addEventListener('hashchange', e => {
+            rootElement.innerHTML = router[location.hash] || `<h3>Not found</h3>`;
+        });
+
+        document.getElementById('change-hash').addEventListener('click', function() {
+            location.hash = 'changed';
+        });
+    </script>
+</body>
+</html>

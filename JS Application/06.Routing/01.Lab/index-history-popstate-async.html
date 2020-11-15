@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routing History API</title>
+</head>
+<body>
+    <h1>Hello History API</h1>
+
+    <div id="root"></div>
+
+    <a href="#" onclick="navigate(event, 'home')">home</a>
+
+    <script>
+        console.log(window.history);
+
+        const rootElement = document.getElementById('root');
+
+        const router = {
+            '/home': name => `<h3>Hello, ${name}</h3>`
+        };
+
+        async function fetchName(id) {
+            let result = await fetch(`https://swapi.dev/api/people/${id}/`);
+            let character = await result.json();
+            return character.name;
+        }
+
+        window.addEventListener('popstate', e => {
+            const routerKey = location.pathname.substring(location.pathname.lastIndexOf('/'));
+            console.log(routerKey);
+
+            fetchName(4)
+                .then(name => {                
+                    rootElement.innerHTML = router[routerKey](name) || `<h2>Not found!</h2>`;
+                });
+        });
+
+        function navigate(e, url) {
+            e.preventDefault();
+            history.pushState({}, '', url);
+            let event = new CustomEvent('popstate', {
+                state: {},
+                title: '',
+                url
+            });
+
+            window.dispatchEvent(event);
+        }
+    </script>
+</body>
+</html>

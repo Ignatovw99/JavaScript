@@ -1,0 +1,8 @@
+.container {
+    display: none;
+}
+
+.side-nav li {
+    display: inline;
+    margin: 5px;
+}
