@@ -1,70 +1,30 @@
-function routeObject(templateId, templateData, navigationPath, routeHandler) {
-    if (templateData === undefined) {
-        templateData = Object.create({});
-    }
-    if (templateData.isAuthenticated === undefined) {
-        Object.assign(templateData, authService.getData());
-    }
-    return {
-        templateId, templateData, navigationPath, routeHandler
-    };
+function renderTemplate(appContainer, templateId, templateData) {
+    const template = Handlebars.compile(document.getElementById(templateId).innerHTML);
+    appContainer.innerHTML = template(templateData);
 }
 
-const routes = {
-    '/': async () => {
-        const templateData = authService.getData();
-        if (templateData.isAuthenticated) {
-            const moviesResponse = await movieService.getAll();
-            let movies;
-            if (moviesResponse) {
-                movies = Object.entries(moviesResponse).map(([id, movie]) => ({ id, ...movie }));
-            } else {
-                movies = [];
-            }
-            Object.assign(templateData, { movies });
-        }
-        return routeObject('home-template', templateData );
-    },
-    '/login': () => {
+const navigate = path => {
+    history.pushState({}, '', path);
+    router(path);
+}
+
+const routesHandler = {
+    '/': homeTemplateHandler,
+    '/login': loginTemplateHandler,
+    '/register': registerTemplateHnalder,
+    '/logout': logoutTemplateHandler,
+    '/add-movie': (appContainerElement) => renderTemplate(appContainerElement, 'add-movie-form-template', authService.getData()),
+    '/details': async (appContainerElement, id) => {
         const authData = authService.getData();
-        let templateId;
-        if (authData.isAuthenticated) {
-            templateId = 'home-template';
-        } else {
-            templateId = 'login-form-template';
-        }
-        return routeObject(templateId);
-    },
-    '/register': () => routeObject('register-form-template'),
-    '/logout': () => routeObject(undefined, undefined, '/', () => authService.logout()),
-    '/add-movie': () => routeObject('add-movie-form-template'),
-    '/details': async (id) => {
         const movie = await movieService.getById(id);
-        return routeObject('movie-description-template', movie);
+        renderTemplate(appContainerElement, 'movie-description-template', Object.assign({}, authData, movie))
     }
 }
 
 const router = async (fullPath) => {
     const appContainer = document.querySelector('#app');
     const pathPattern = /\/[^\s/]*/g;
-
     const [path, pathVariable] = fullPath.matchAll(pathPattern);
 
-    const templateObj = await routes[path](pathVariable);
-
-    if (templateObj.routeHandler !== undefined) {
-        templateObj.routeHandler();
-    }
-    
-    if (templateObj.templateId !== undefined) {
-        const template = Handlebars.compile(document.getElementById(templateObj.templateId).innerHTML);
-        appContainer.innerHTML = template(templateObj.templateData);
-    } else if (templateObj.navigationPath !== undefined) {
-        navigate(templateObj.navigationPath);
-    }
-}
-
-const navigate = path => {
-    history.pushState({}, '', path);
-    router(path);
+    routesHandler[path](appContainer, pathVariable);
 }
