@@ -1,12 +1,26 @@
-function renderTemplate(appContainer, templateId, templateData) {
-    const template = Handlebars.compile(document.getElementById(templateId).innerHTML);
-    appContainer.innerHTML = template(templateData);
+function renderTemplate(appContainer, templateId, templateData, templateEventHandlers = {}) {
+    appContainer.innerHTML = '';
+    const templateHTML = htmlDomElementHelper.createHtmlTemplate(templateId, templateData);
+    const domElement = htmlDomElementHelper.createDomElementFromHtmlText(templateHTML);
+    eventListenerHelper.attachEventHanlderObjectTo(domElement, templateEventHandlers);
+    appContainer.addEventListener('click', navigateHandler, false);
+    appContainer.appendChild(domElement);
 }
 
 const navigate = path => {
     history.pushState({}, '', path);
-    router(path);
+    let event = new CustomEvent('popstate', {
+        state: {},
+        title: '',
+        path
+    }); 
+
+    window.dispatchEvent(event);
 }
+
+window.addEventListener('popstate', e => {
+    router(location.pathname)
+});
 
 const routesHandler = {
     '/': homeTemplateHandler,
@@ -14,17 +28,12 @@ const routesHandler = {
     '/register': registerTemplateHnalder,
     '/logout': logoutTemplateHandler,
     '/add-movie': (appContainerElement) => renderTemplate(appContainerElement, 'add-movie-form-template', authService.getData()),
-    '/details': async (appContainerElement, id) => {
-        const authData = authService.getData();
-        const movie = await movieService.getById(id);
-        renderTemplate(appContainerElement, 'movie-description-template', Object.assign({}, authData, movie))
-    }
+    '/details': movieDetailsTemplateHandler
 }
 
 const router = async (fullPath) => {
     const appContainer = document.querySelector('#app');
-    const pathPattern = /\/[^\s/]*/g;
-    const [path, pathVariable] = fullPath.matchAll(pathPattern);
-
-    routesHandler[path](appContainer, pathVariable);
+    const [path, pathVariable] = fullPath.split('/').filter(x => x.trim() !== '');
+    const route = '/' + (path || '');
+    routesHandler[route](appContainer, pathVariable);
 }

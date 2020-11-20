@@ -30,6 +30,14 @@ const authService = {
         return loginData;
     },
 
+    async register(email, password) {
+        const registerData = await request(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, 'POST', { email, password });
+
+        localStorage.setItem('auth', JSON.stringify(registerData));
+
+        return registerData;
+    },
+
     getData() {
         try {
             const authData = JSON.parse(localStorage.getItem('auth'));

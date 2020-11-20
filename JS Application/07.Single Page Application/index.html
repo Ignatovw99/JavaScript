@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>SPA 2020</title>
-    <link rel="icon" type="image/png" href="../static/favicon.ico">
-    <link href="../static/css/site.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/static/favicon.ico">
+    <link href="/static/css/site.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -16,14 +16,6 @@
         <div id="app">
             
         </div>
-        
-        <section class="notifications" style="display: none;">
-            <p class="notification-message" id="errorBox">Message...</p>
-        </section>
-        <section class="notifications"  style="display: none;background-color:rgba(1, 131, 29, 0.541);">
-            <p class="notification-message" id="successBox">Message...</p>
-        </section> 
-        
 
         <!-- 
         <form class="text-center border border-light p-5" action="#" method="">
@@ -44,16 +36,10 @@
         </form>
 
          -->
-
-        <footer class="page-footer font-small">
-            <div class="footer-copyright text-center py-3">© 2020
-                <a href="https://softuni.bg/trainings/2840/js-applications-june-2020/internal" class="text-dark">JS Applications</a>
-            </div>
-        </footer>
     </div>
 
     <script type="text/x-handlebars-template" id="navigation-template">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navigation" onclick="navigateHandler(event)">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navigation">
             <a class="navbar-brand text-light" href="/">Movies</a>
             <ul class="navbar-nav ml-auto ">
                 {{#if isAuthenticated}}
@@ -88,6 +74,8 @@
         {{#if isAuthenticated}}
         {{> movies-partial}}
         {{/if}}
+        
+        {{> footer-partial}}
     </script>
 
     <script type="text/x-handlebars-template" id="movie-partial">
@@ -97,7 +85,7 @@
                 <h4 class="card-title">{{title}}</h4>
             </div>
             <div class="card-footer">
-                <a href="/details/{{id}}" onclick="navigateHandler(event)"><button type="button" class="btn btn-info" >Details</button></a>
+                <a href="/details/{{id}}" class="detials-movie"><button type="button" class="btn btn-info" >Details</button></a>
             </div>
 
         </div>
@@ -107,7 +95,7 @@
         
         <h1 class="text-center">Movies</h1>
         <section>
-            <a href="/add-movie" class="btn btn-warning" onclick="navigateHandler(event)">Add Movie</a>
+            <a href="/add-movie" class="btn btn-warning" id="add-movie-navigation">Add Movie</a>
             <form class="search float-right">
                 <label>Search: </label>
                 <input type="text">
@@ -144,7 +132,7 @@
                 <div class="col-md-4 text-center">
                     <h3 class="my-3 ">Movie Description</h3>
                     <p>{{description}}</p>
-                    <a class="btn btn-danger" href="#">Delete</a>
+                    <a class="btn btn-danger" href="/movie-delete/{{id}}">Delete</a>
                     <a class="btn btn-warning" href="#">Edit</a>
                     <a class="btn btn-primary" href="#">Like</a>
                     <span class="enrolled-span">Liked 1</span>
@@ -152,12 +140,13 @@
             </div>
         </div>
 
+        {{> footer-partial}}
     </script>
     
     <script type="text/x-handlebars-template" id="login-form-template">
         {{> navigation-partial}}
 
-        <form id="login-form" class="text-center border border-light p-5" onsubmit="onLoginSubmit(event)">
+        <form id="login-form" class="text-center border border-light p-5">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" placeholder="Email" name="email" value="">
@@ -169,12 +158,14 @@
         
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
+
+        {{> footer-partial}}
     </script>
 
     <script type="text/x-handlebars-template" id="register-form-template">
         {{> navigation-partial}}
 
-        <form class="text-center border border-light p-5">
+        <form id="register-form" class="text-center border border-light p-5">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" placeholder="Email" name="email" value="">
@@ -191,6 +182,8 @@
         
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
+
+        {{> footer-partial}}
     </script>
 
     <script type="text/x-handlebars-template" id="add-movie-form-template">
@@ -212,13 +205,36 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
+        {{> footer-partial}}
     </script>
 
-    <script src="./node_modules/handlebars/dist/handlebars.min.js"></script>
-    <script src="./services.js"></script>
-    <script src="./template-handler.js"></script>
-    <script src="./router.js"></script>
-    <script src="./script.js"></script>
+    <script type="text/x-handlebars-template" id="footer-template">
+        <footer class="page-footer font-small">
+            <div class="footer-copyright text-center py-3">© 2020
+                <a href="https://softuni.bg/trainings/2840/js-applications-june-2020/internal" class="text-dark">JS Applications</a>
+            </div>
+        </footer>
+    </script>
+
+    <script type="text/x-handlebars-template" id="error-section-template">
+        <section class="notifications">
+            <p class="notification-message" id="errorBox">{{message}}</p>
+        </section>
+    </script>
+
+    <script type="text/x-handlebars-template" id="successful-section-template">
+        <section class="notifications"  style="background-color:rgba(1, 131, 29, 0.541);">
+            <p class="notification-message" id="successBox">{{message}}</p>
+        </section> 
+    </script>
+
+    <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="/helper.js"></script>
+    <script src="/services.js"></script>
+    <script src="/template-handler.js"></script>
+    <script src="/router.js"></script>
+    <script src="/script.js"></script>
 
 </body>
 </html>

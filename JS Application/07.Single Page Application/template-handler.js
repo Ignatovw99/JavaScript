@@ -19,12 +19,29 @@ const loginTemplateHandler = (appContainerElement) => {
     const authData = authService.getData();
     const templateId = authData.isAuthenticated ? 'home-template' : 'login-form-template';
 
-    renderTemplate(appContainerElement, templateId, authData);
+    const templateEventHandlers = {
+        '#login-form button': eventListenerHelper.createEventListenerEntry(onLoginSubmit)
+    };
+    renderTemplate(appContainerElement, templateId, authData, templateEventHandlers);
 };
 
-const registerTemplateHnalder = (appContainerElement) => renderTemplate(appContainerElement, 'register-form-template');
+const registerTemplateHnalder = (appContainerElement) => { 
+    const templateEventHandlers = {
+        '#register-form button':  eventListenerHelper.createEventListenerEntry(onRegisterSubmit)
+    };
+
+    renderTemplate(appContainerElement, 'register-form-template', authService.getData(), templateEventHandlers);
+};
 
 const logoutTemplateHandler = () => {
     authService.logout();
     navigate('/');
+};
+
+const movieDetailsTemplateHandler = async (appContainerElement, id) => {
+    const authData = authService.getData();
+    const movie = await movieService.getById(id);
+    const templateData = Object.assign(authData, ({ id, ...movie }));
+
+    renderTemplate(appContainerElement, 'movie-description-template', templateData)
 };
